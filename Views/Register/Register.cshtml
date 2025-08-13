@@ -1,0 +1,78 @@
+﻿@model ProjectForm.Models.UsersModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Register Home";
+}
+
+<div class="container-register">
+    <div class="title text-center">
+        <h2>Register</h2>
+    </div>
+
+    <form asp-action="Register" method="post" onsubmit="return validateRegisterForm();">
+        <div class="register-row-name-surname" style="text-align:center">
+            <input asp-for="name" type="text" placeholder="Name" id="name"/>
+            <input asp-for="surname" type="text" placeholder="Surname" id="surname" />
+        </div>
+        <div class="register-email-password">
+            <input asp-for="email" type="email" placeholder="Email" id="email" />
+            <input asp-for="password" type="password" placeholder="Password" id="password" />
+            <input type="password" name="confirmPassword" placeholder="Password Again" id="confirmPassword"/>
+        </div>
+        <div class="gender">
+            <p><b>Gender:</b></p>
+            <input type="radio" asp-for="gender" value="true" id="male" />
+            <label for="male">Male</label>
+
+            <input type="radio" asp-for="gender" value="false" id="female" />
+            <label for="female">Female</label>
+        </div>
+        <div class="input-box text-center">
+            <input type="submit" value="Register" />
+        </div>
+    </form>
+
+    <script>
+        function validateRegisterForm(){
+            const name = document.getElementById("name").value.trim();
+            if (name === ""){
+                alert("İsim alanı boş bırakılamaz!");
+                return false;
+            }
+            const surname = document.getElementById("surname").value.trim();
+            if (surname === ""){
+                alert("Soyisim alanı boş bırakılamaz!");
+                return false;
+            }
+            const email = document.getElementById("email").value.trim();
+            if (email === ""){
+                alert("İsim alanı boş bırakılamaz!");
+                return false;
+            }
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            if (password === "" || confirmPassword === ""){
+                alert("Şifre alanı boş bırakılamaz!");
+                return false;
+            }
+            if (password != confirmPassword)
+            {
+                alert("Şifreler farklı olamaz!");
+                return false;
+            }
+            if (password.length < 6){
+                alert("Şifre en az 6 karakter olmalı!")
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+    
+
+    <div class="login-link text-center">
+        <br />
+        <p>Do have an account? <a asp-controller="Home" asp-action="Index">Login</a></p>
+    </div>
+</div>

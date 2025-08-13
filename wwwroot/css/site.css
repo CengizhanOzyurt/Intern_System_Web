@@ -1,0 +1,282 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;   
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    padding: 20px 20px;
+    background: linear-gradient(to right,#7eabec 0%,#e0eefa 100%);
+}
+.container{
+    background:white;
+    max-width: 400px;
+    width:100%;
+    padding:25px 15px;
+    border-radius:10px;
+}
+.container form .input-box{
+    width: 100%;
+    height: 35px;
+    margin-top: 30px;
+    position:relative;
+}
+.container .logo img{
+    width: 300px;
+    height: 95px;
+}
+.container .title {
+    color: #002F5A;
+}
+.container form .input-box input{
+    height:100%;
+    width: 100%;
+    outline: none;
+    font-size:16px;
+    border: none;
+}
+.container form .underline:before{
+    position: absolute;
+    content:'';
+    height: 2px;
+    width: 100%;
+    background:#ccc;
+    left:0;
+    bottom:0;
+}
+.container form .underline:after{
+    position :absolute;
+    content:'';
+    height:2px;
+    width:100%;
+    left:0;
+    bottom:0;
+    background:#258cfb;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:all 0.3s ease;
+}
+.container form .input-box input:focus ~ .underline:after{
+    transform:scaleX(1);
+    transform-origin:left;
+}
+.container form .input-box input[type="submit"]{
+    font-size:17px;
+    font-weight:bold;
+    color:white;
+    background-color:#3FA5CB;
+    border-radius:20px;
+    width: 200px;
+    
+}
+.container .text{
+    padding:20px,20px;
+}
+.container .register-link{
+    padding:20px;
+}
+.container form .register-row-name-surname {
+    width: 100px;
+    display:flex;
+    gap: 10px;
+    padding-left:10px;
+}
+.container-register {
+    background: white;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
+.container form .register-row-name-surname input[type="text"] {
+    width: 170px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-color: #3FA5CB;
+    outline-color: #2157dd;
+    
+}
+.container form .register-email-password input {
+    width: 350px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-color: #3FA5CB;
+    outline-color: #2157dd;
+    margin-left: 10px;
+ 
+}
+.container form .gender {
+    margin:10px;
+    margin-bottom:0px;
+    color: #002F5A;
+    padding-bottom:-10px;
+}
+.Todo_Container{
+    width:100%;
+    height: 600px;
+    
+}
+.Todo_Container .Todo_Header .logo{
+    width: 270px;
+    height: 150px;
+    
+}
+.Todo_Container form .textbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Todo_Container form .textbox input{
+    width: 320px;
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    background-color: #E8E8E8;
+}
+.Todo_Container form .textbox input:focus{
+    outline-color:#F25C05;
+}
+.Todo_Container form .textbox .add_button{
+    position: relative;
+    flex: 1;
+    color: #fff;
+    background-color: #F25C05;
+    border-radius: 100%;
+    width: 400px;
+    height: 45px;
+    outline-color: white;
+    font-size: large;
+}
+.Todo_Container form .date_row {
+    display: flex;
+    justify-content: center;   /* Ortalamak için */
+    align-items: center;       /* Dikeyde hizalama */
+    gap: 40px;                 /* İki tarih kutusu arası boşluk */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Todo_Container form .date_container1,
+.Todo_Container form .date_container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F25C05;
+}
+
+.Todo_Container form .date_container1 input,
+.Todo_Container form .date_container2 input {
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.Todo_Container form .scroll_container{
+    width: 350px;
+    max-height: 300px;
+    padding: 10px;
+    background-color: #E8E8E8;
+    border-radius: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.scroll_container {
+    width: 100%;
+    max-height: 300px;
+    padding: 10px;
+    background-color: #E8E8E8;
+    border-radius: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task_text {
+    font-size: 16px;
+    color: #333;
+}
+
+
+.task_actions {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+.delete_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #F25C05;
+    font-size: 18px;
+}
+.delete_button:hover {
+    color: red;
+}
+
+.edit_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa8a6;
+    font-size: 18px;
+}
+
+.status-box.hidden {
+    background: transparent;
+    border: none;
+}
+
+.expired {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px; 
+    text-decoration-color: red;    
+}
+
+.status-box {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.box-green {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+.box-orange {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+.box-red {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
