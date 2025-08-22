@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 432">
+  <rect width="1024" height="432" fill="#8EB5F0"/>
+  <rect x="394" y="56" width="236" height="320" rx="5" fill="white"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1024" height="40" fill="white"/>
+  <text x="42" y="26" font-family="Arial" font-size="14" fill="black">ProjectForm</text>
+  <text x="98" y="26" font-family="Arial" font-size="14" fill="black">Home</text>
+  <text x="135" y="26" font-family="Arial" font-size="14" fill="black">Privacy</text>
+  
+  <!-- Login Form -->
+  <text x="508" y="100" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Welcome to Yaz Bilgi</text>
+  <text x="508" y="125" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Intern System!</text>
+  
+  <!-- Yaz Logo -->
+  <g transform="translate(445, 155)">
+    <path d="M30,0 L60,30 L30,60 L0,30 Z" fill="#2B8AC8"/>
+    <rect x="70" y="15" width="80" height="10" fill="#2B8AC8"/>
+    <rect x="70" y="35" width="80" height="10" fill="#2B8AC8"/>
+  </g>
+  <text x="508" y="190" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">BILGI SISTEMLERI VE TICARET A.S.</text>
+  
+  <!-- Form Fields -->
+  <rect x="413" y="207" width="198" height="1" fill="#ccc"/>
+  <text x="413" y="203" font-family="Arial" font-size="12" fill="#666">Email</text>
+  
+  <rect x="413" y="244" width="198" height="1" fill="#ccc"/>
+  <text x="413" y="240" font-family="Arial" font-size="12" fill="#666">Password</text>
+  
+  <!-- Enter Button -->
+  <rect x="451" y="277" width="122" height="30" rx="15" fill="#4BAAD4"/>
+  <text x="512" y="297" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Enter</text>
+  
+  <!-- Register Link -->
+  <text x="490" y="310" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Don't have an account?</text>
+  <text x="558" y="310" font-family="Arial" font-size="12" fill="#4BAAD4">register</text>
+</svg>

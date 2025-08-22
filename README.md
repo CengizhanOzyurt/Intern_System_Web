@@ -58,6 +58,17 @@ This is a web-based task management application built with ASP.NET Core. The sys
    - Web Interface: https://localhost:5001 or http://localhost:5000
    - API Documentation: https://localhost:5001/swagger or http://localhost:5000/swagger
 
+## Screenshots
+
+### Login Screen
+![Login Screen](/wwwroot/images/login_screen.png)
+
+### Registration Screen
+![Registration Screen](/wwwroot/images/register_screen.png)
+
+### Todo Management Screen
+![Todo Screen](/wwwroot/images/todo_screen.png)
+
 ## API Endpoints
 
 The application provides RESTful API endpoints for user and task management. You can explore these endpoints using the Swagger UI available at `/swagger`.
