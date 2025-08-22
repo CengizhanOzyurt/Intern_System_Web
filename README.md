@@ -61,13 +61,13 @@ This is a web-based task management application built with ASP.NET Core. The sys
 ## Screenshots
 
 ### Login Screen
-![Login Screen](/wwwroot/images/login_screen.png)
+![Login Screen](/wwwroot/images/login.png)
 
 ### Registration Screen
-![Registration Screen](/wwwroot/images/register_screen.png)
+![Registration Screen](/wwwroot/images/register.png)
 
 ### Todo Management Screen
-![Todo Screen](/wwwroot/images/todo_screen.png)
+![Todo Screen](/wwwroot/images/todo.png)
 
 ## API Endpoints
 
