@@ -1,78 +1,45 @@
-# Yaz Bilgi Intern Task Management System
+Yaz Bilgi Intern Task Management System (iOS)
 
-## Overview
-This is a web-based task management application built with ASP.NET Core. The system allows users to register, login, and manage their tasks with start and end dates.
+📖 Overview
 
-## Features
-- User authentication (register and login)
-- Task management (create, view, update, and delete tasks)
-- Task scheduling with start and end dates
-- RESTful API with Swagger documentation
+Bu proje, Swift ve Xcode kullanılarak geliştirilmiş bir iOS tabanlı görev yönetim uygulamasıdır.
+Sistem, kullanıcıların giriş yapmasına, başarılı oturum açma sonrası kişisel bir karşılama ekranı görmesine ve görev yönetimi fonksiyonlarının mobil sürümüne erişmesine imkan tanır.
 
-## Technology Stack
-- **Framework**: ASP.NET Core 8.0
-- **ORM**: Entity Framework Core 8.0
-- **Database**: PostgreSQL
-- **Frontend**: ASP.NET MVC Views with CSS
-- **API Documentation**: Swagger/OpenAPI
+⸻
 
-## Project Structure
-- **Controllers/**: Contains MVC controllers and API controllers
-  - **Api/**: RESTful API controllers
-  - **HomeController.cs**: Main controller for web pages
-- **Models/**: Data models and database context
-  - **UsersModel.cs**: User entity
-  - **UsersTaskModel.cs**: Task entity
-  - **InternDBcontext.cs**: Database context
-- **Views/**: MVC views
-  - **LoginPage/**: Login related views
-  - **RegisterPage/**: Registration related views
-  - **TodoPage/**: Task management views
+🚀 Features
+	•	👤 Kullanıcı login ekranı
+	•	✅ Başarılı giriş sonrası kullanıcı adını görüntüleyen karşılama sayfası
+	•	📡 RESTful API üzerinden backend ile entegrasyon (ASP.NET Core servisleriyle çalışır)
+	•	🎨 Basit ve kullanıcı dostu iOS arayüzü
 
-## Prerequisites
-- .NET 8.0 SDK
-- PostgreSQL database
+⸻
 
-## Setup and Installation
+🛠 Technology Stack
+	•	Language: Swift 5
+	•	Framework: UIKit / SwiftUI (uygulamanın yapısına göre)
+	•	IDE: Xcode 15+
+	•	Backend: ASP.NET Core Web API (PostgreSQL + Swagger)
 
-1. **Clone the repository**
-   ```
-   git clone <repository-url>
-   cd Yaz-bilgi-main
-   ```
+⸻
 
-2. **Configure the database connection**
-   - Update the connection string in `appsettings.json`
+📂 Project Structure
+	•	Intern System.xcodeproj: Xcode proje dosyası
+	•	AppDelegate.swift: Uygulama yaşam döngüsü yönetimi
+	•	SceneDelegate.swift: Scene yönetimi
+	•	LoginView.swift: Kullanıcı giriş arayüzü
+	•	HomeView.swift: Karşılama ekranı
+	•	Models.swift: Veri modelleri
+	•	APIClient.swift: REST API istemcisi
 
-3. **Apply database migrations**
-   ```
-   dotnet ef database update
-   ```
+⸻
 
-4. **Run the application**
-   ```
-   dotnet run
-   ```
+📋 Prerequisites
+	•	Xcode 15+
+	•	iOS 17+ Simulator veya gerçek cihaz
+	•	Backend API için çalışan ASP.NET Core server (bkz. web versiyonu)
 
-5. **Access the application**
-   - Web Interface: https://localhost:5001 or http://localhost:5000
-   - API Documentation: https://localhost:5001/swagger or http://localhost:5000/swagger
+⸻
 
-## Screenshots
-
-### Login Screen
-![Login Screen](/wwwroot/images/login.png)
-
-### Registration Screen
-![Registration Screen](/wwwroot/images/register.png)
-
-### Todo Management Screen
-![Todo Screen](/wwwroot/images/todo.png)
-
-## API Endpoints
-
-The application provides RESTful API endpoints for user and task management. You can explore these endpoints using the Swagger UI available at `/swagger`.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+⚙️ Setup and Installation
+	1.	Repo’yu klonla:
