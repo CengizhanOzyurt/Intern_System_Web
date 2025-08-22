@@ -20,20 +20,16 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/LoginPage/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW5QYWdlL0xvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/LoginPage/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW5QYWdlL1ByaXZhY3kuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/HomePage/HomePage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZVBhZ2UvSG9tZVBhZ2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/Register/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0ZXIvUmVnaXN0ZXIuY3NodG1s
+[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/RegisterPage/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVnaXN0ZXJQYWdlL1JlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/Shared/Error.cshtml]
@@ -42,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/TodoPage/Todo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVG9kb1BhZ2UvVG9kby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/kawhi2ceng/Desktop/Yaz bilgi projects/Yaz-bilgi-main/Views/_ViewImports.cshtml]

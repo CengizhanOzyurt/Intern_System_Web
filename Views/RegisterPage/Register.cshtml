@@ -1,7 +1,7 @@
 ﻿@model ProjectForm.Models.UsersModel
 
 @{
-    Layout = "_Layout";
+    Layout = "_Layout";              
     ViewData["Title"] = "Register Home";
 }
 
@@ -10,16 +10,29 @@
         <h2>Register</h2>
     </div>
 
-    <form asp-action="Register" method="post" onsubmit="return validateRegisterForm();">
+    <form asp-controller="Home" asp-action="Register" method="post" onsubmit="return validateRegisterForm();">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
         <div class="register-row-name-surname" style="text-align:center">
-            <input asp-for="name" type="text" placeholder="Name" id="name"/>
+            <input asp-for="name" type="text" placeholder="Name" id="name" />
+            <span asp-validation-for="name" class="text-danger"></span>
+
             <input asp-for="surname" type="text" placeholder="Surname" id="surname" />
+            <span asp-validation-for="surname" class="text-danger"></span>
         </div>
+
         <div class="register-email-password">
             <input asp-for="email" type="email" placeholder="Email" id="email" />
-            <input asp-for="password" type="password" placeholder="Password" id="password" />
-            <input type="password" name="confirmPassword" placeholder="Password Again" id="confirmPassword"/>
+            <span asp-validation-for="email" class="text-danger"></span>
+
+            <input asp-for="password" type="password" placeholder="Password" id="password" autocomplete="new-password" />
+            <span asp-validation-for="password" class="text-danger"></span>
+
+            <input type="password" name="confirmPassword" placeholder="Password Again" id="confirmPassword" autocomplete="new-password" />
         </div>
+
         <div class="gender">
             <p><b>Gender:</b></p>
             <input type="radio" asp-for="gender" value="true" id="male" />
@@ -27,7 +40,9 @@
 
             <input type="radio" asp-for="gender" value="false" id="female" />
             <label for="female">Female</label>
+            <span asp-validation-for="gender" class="text-danger"></span>
         </div>
+
         <div class="input-box text-center">
             <input type="submit" value="Register" />
         </div>
@@ -47,32 +62,33 @@
             }
             const email = document.getElementById("email").value.trim();
             if (email === ""){
-                alert("İsim alanı boş bırakılamaz!");
+                alert("E‑posta alanı boş bırakılamaz!");
                 return false;
             }
             const password = document.getElementById("password").value.trim();
             const confirmPassword = document.getElementById("confirmPassword").value.trim();
             if (password === "" || confirmPassword === ""){
-                alert("Şifre alanı boş bırakılamaz!");
+                alert("Şifre alanları boş bırakılamaz!");
                 return false;
             }
-            if (password != confirmPassword)
-            {
-                alert("Şifreler farklı olamaz!");
+            if (password !== confirmPassword){
+                alert("Şifreler aynı olmalı!");
                 return false;
             }
             if (password.length < 6){
-                alert("Şifre en az 6 karakter olmalı!")
+                alert("Şifre en az 6 karakter olmalı!");
                 return false;
             }
             return true;
         }
-
     </script>
-    
 
     <div class="login-link text-center">
         <br />
-        <p>Do have an account? <a asp-controller="Home" asp-action="Index">Login</a></p>
+        <p>Do you have an account? <a asp-controller="Home" asp-action="Login">Login</a></p>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

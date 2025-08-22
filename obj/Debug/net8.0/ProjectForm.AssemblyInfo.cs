@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectForm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04ee1de506b91f2a173120f65a72c7934748aa55")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectForm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectForm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

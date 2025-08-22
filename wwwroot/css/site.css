@@ -136,6 +136,7 @@ body {
     width:100%;
     height: 600px;
     
+    
 }
 .Todo_Container .Todo_Header .logo{
     width: 270px;
@@ -170,9 +171,9 @@ body {
 }
 .Todo_Container form .date_row {
     display: flex;
-    justify-content: center;   /* Ortalamak için */
-    align-items: center;       /* Dikeyde hizalama */
-    gap: 40px;                 /* İki tarih kutusu arası boşluk */
+    justify-content: center;   
+    align-items: center;       
+    gap: 40px;                
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -203,7 +204,7 @@ body {
 }
 .scroll_container {
     width: 100%;
-    max-height: 300px;
+    height: 300px;
     padding: 10px;
     background-color: #E8E8E8;
     border-radius: 20px;
@@ -279,4 +280,8 @@ body {
 }
 .box-red {
     background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+.Todo_Container .logout_button{
+    margin-top: 30px;
+    margin: auto;
 }

@@ -1,0 +1,255 @@
+﻿@model ProjectForm.Models.HomePageViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "HomePage";
+}
+
+<div class="Todo_Container">
+    <div class="Todo_Header" style="text-align: center;">
+        <img src="~/images/todologo.png" class="logo" />
+    </div>
+
+    <form asp-action="Todo" method="post" onsubmit="return validateAll();">
+        @Html.AntiForgeryToken()
+        <div class="textbox">
+            <input asp-for="TaskModel.task" type="text" placeholder="Enter your daily task!" id="task" />
+            <button class="add_button" type="submit"><b>+</b></button>
+        </div>
+
+        <div class="date_row">
+            <div class="date_container1">
+                <p><b>Start Date</b></p>
+                <input asp-for="TaskModel.start_date" type="date" id="start_date" />
+            </div>
+            <div class="date_container2">
+                <p><b>End Date</b></p>
+                <input asp-for="TaskModel.end_date" type="date" id="end_date" />
+            </div>
+        </div>
+
+        <div class="scroll_container">
+            @foreach (var task in Model.Tasks
+                .OrderByDescending(t => t.end_date.HasValue && t.end_date.Value.Date < DateTime.Today)
+                .ThenBy(t => t.end_date))
+            {
+                bool gecmis = task.end_date.HasValue && task.end_date.Value.Date < DateTime.Today;
+
+                int kalanGun = 0;
+                if (!gecmis && task.end_date.HasValue)
+                {
+                    kalanGun = (int)(task.end_date.Value.Date - DateTime.Today).TotalDays;
+                }
+
+                string boxClass = "box-green";
+                if (!gecmis)
+                {
+                    if (kalanGun <= 1)
+                        boxClass = "box-red";
+                    else if (kalanGun <= 7)
+                        boxClass = "box-orange";
+                }
+
+                var startStr = task.start_date.HasValue ? task.start_date.Value.ToString("yyyy-MM-dd") : "";
+                var endStr   = task.end_date.HasValue ? task.end_date.Value.ToString("yyyy-MM-dd") : "";
+
+                <div class="task_item">
+                    <span class="task_text @(gecmis ? "expired" : "")">
+                        @task.task - @task.end_date?.ToString("dd.MM")
+                    </span> 
+
+                    <div class="task_actions">
+                        @if (!gecmis)
+                        {
+                            <span class="status-box @boxClass"></span>
+                        }
+
+                        <button type="button"
+                                class="edit_button"
+                                data-id="@task.id"
+                                data-task="@task.task"
+                                data-start="@startStr"
+                                data-end="@endStr"
+                                onclick="quickEdit(this)">
+                            <i class="fas fa-edit"></i>
+                        </button>
+
+                        <button type="button" class="delete_button" onclick="deleteTask(@task.id)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </form>
+
+    <div class="logout_button">
+        <p style="text-align: center;">
+            <a asp-controller="Login" asp-action="Login">Logout</a>
+        </p>
+    </div>
+</div>
+
+<div id="editModal" class="simple-modal" aria-hidden="true">
+    <div class="simple-modal-backdrop" onclick="closeEditModal()"></div>
+    <div class="simple-modal-content" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+        <div class="simple-modal-header">
+            <h5 id="editModalTitle">Görev Düzenle</h5>
+            <button type="button" class="simple-close" onclick="closeEditModal()" aria-label="Kapat">×</button>
+        </div>
+
+        <form id="editForm">
+            <input type="hidden" name="Id" id="edit-id" />
+
+            <div class="simple-modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Task</label>
+                    <input type="text" class="form-control" name="Task" id="edit-task" required maxlength="255" />
+                </div>
+
+                <div class="row-2">
+                    <div class="col">
+                        <label class="form-label">Start Date</label>
+                        <input type="date" class="form-control" name="Start_Date" id="edit-start" required />
+                    </div>
+                    <div class="col">
+                        <label class="form-label">End Date</label>
+                        <input type="date" class="form-control" name="End_Date" id="edit-end" required />
+                    </div>
+                </div>
+            </div>
+
+            <div class="simple-modal-footer">
+                <button type="button" class="btn btn-light" onclick="closeEditModal()">Vazgeç</button>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+/* Basit modal stilleri (Bootstrap gerektirmez) */
+.simple-modal { display:none; position:fixed; inset:0; z-index:9999; }
+.simple-modal.show { display:block; }
+.simple-modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.35); }
+.simple-modal-content { position:relative; margin:5% auto; max-width:520px; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+.simple-modal-header, .simple-modal-footer { padding:12px 16px; background:#f7f7f7; display:flex; align-items:center; justify-content:space-between; }
+.simple-modal-body { padding:16px; }
+.simple-close { background:transparent; border:none; font-size:22px; line-height:1; cursor:pointer; }
+.row-2 { display:flex; gap:12px; }
+.row-2 .col { flex:1; }
+.form-control { width:100%; padding:8px 10px; border:1px solid #ddd; border-radius:8px; }
+.btn { padding:8px 14px; border-radius:8px; border:none; cursor:pointer; }
+.btn-light { background:#e9ecef; }
+.btn-primary { background:#3b82f6; color:#fff; }
+</style>
+
+<script>
+    // ---- Yardımcı: Token'ı bul
+    function getRequestVerificationToken() {
+        const input = document.querySelector('input[name="__RequestVerificationToken"]');
+        return input ? input.value : '';
+    }
+
+    // ---- Form (add) doğrulama
+    function validateAll() {
+        const task = document.getElementById("task").value.trim();
+        if (!task) {
+            alert("Lütfen bir görev girin.");
+            return false;
+        }
+        const start = document.getElementById("start_date").value;
+        const end = document.getElementById("end_date").value;
+
+        if (!start || !end) {
+            alert("Lütfen her iki tarihi de girin.");
+            return false;
+        }
+        if (new Date(start) > new Date(end)) {
+            alert("Başlangıç tarihi, bitiş tarihinden sonra olamaz.");
+            return false;
+        }
+        return true;
+    }
+
+    // ---- Silme
+    function deleteTask(id) {
+        if (confirm("Bu görevi silmek istediğinize emin misiniz?")) {
+            fetch(`/Home/DeleteTask/${id}`, {
+                method: "POST",
+                headers: { 'RequestVerificationToken': getRequestVerificationToken() },
+                credentials: 'same-origin'
+            })
+            .then(r => r.ok ? location.reload() : r.text().then(t => { throw new Error(t || 'Hata'); }))
+            .catch(error => console.error("Silme hatası:", error));
+        }
+    }
+
+    // ---- DÜZENLE: butona tıklanınca modalı doldur
+    function quickEdit(btn) {
+        const id    = btn.getAttribute('data-id');
+        const task  = btn.getAttribute('data-task') || '';
+        const start = btn.getAttribute('data-start') || '';
+        const end   = btn.getAttribute('data-end') || '';
+
+        document.getElementById('edit-id').value    = id;
+        document.getElementById('edit-task').value  = task;
+        document.getElementById('edit-start').value = start;
+        document.getElementById('edit-end').value   = end;
+
+        openEditModal();
+    }
+
+    // ---- Modal aç/kapat
+    function openEditModal() {
+        const m = document.getElementById('editModal');
+        m.classList.add('show');
+        m.setAttribute('aria-hidden', 'false');
+    }
+    function closeEditModal() {
+        const m = document.getElementById('editModal');
+        m.classList.remove('show');
+        m.setAttribute('aria-hidden', 'true');
+    }
+
+    // ---- Edit form submit -> /Home/EditTask
+    document.addEventListener('DOMContentLoaded', function () {
+        const editForm = document.getElementById('editForm');
+        if (!editForm) return;
+
+        editForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(editForm);
+
+            // Zorunluluk + sıra kontrolü
+            const task = (formData.get('Task') || '').toString().trim();
+            const s = (formData.get('Start_Date') || '').toString();
+            const en = (formData.get('End_Date') || '').toString();
+
+            if (!task) { alert('Task boş olamaz.'); return; }
+            if (!s || !en) { alert('Tarih alanları zorunlu.'); return; }
+            if (new Date(s) > new Date(en)) {
+                alert('Bitiş, başlangıçtan önce olamaz.');
+                return;
+            }
+
+            fetch('/Home/EditTask', {
+                method: 'POST',
+                headers: { 'RequestVerificationToken': getRequestVerificationToken() },
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(r => r.ok ? r.json() : r.text().then(t => { throw new Error(t || 'Hata'); }))
+            .then(res => {
+                if (res.ok) {
+                    closeEditModal();
+                    window.location.reload();
+                } else {
+                    alert(res.error || 'Güncelleme başarısız.');
+                }
+            })
+            .catch(err => alert('Sunucu hatası: ' + (err.message || err)));
+        });
+    });
+</script>

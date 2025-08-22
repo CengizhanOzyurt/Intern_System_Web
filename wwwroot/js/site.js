@@ -22,46 +22,19 @@ function deleteTodo(id) {
         });
     }
 }
-window.quickEdit = function (id, currentText) {
-    const val = prompt("Görevi düzenle:", currentText);
-    if (val === null) return;               
-    const task = val.trim();
-    if (!task) { alert("Görev boş olamaz."); return; }
-
+function populateForm(i){
     $.ajax({
-        url: '/Home/Edit',
-        type: 'POST',
-        data: { id, task },
-        success: function (res) {
-            if (res.ok) location.reload();
-            else alert(res.error || "Güncelleme başarısız.");
-        },
-        error: function () { alert("Sunucu hatası oluştu."); }
+        url: 'Home/PopulateForm',
+        type: 'GET',
+        data: { id : id },
+        success: function(response){
+        $("#form-task").val(response.task);
+        $("#form-button").val("Update Todo");
+        $("#form-action").attr("action", "/Home/Edit");
+    }
     });
 };
 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
